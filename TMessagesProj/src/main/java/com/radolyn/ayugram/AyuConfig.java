@@ -1,5 +1,5 @@
 /*
- * This is the source code of AyuGram for Android.
+ * This is the source code of Suhbat for Android.
  *
  * We do not and cannot prevent the use of our code,
  * but be respectful and credit the original author.
@@ -66,7 +66,7 @@ public class AyuConfig {
                 return;
             }
 
-            preferences = ApplicationLoader.applicationContext.getSharedPreferences("ayuconfig", Activity.MODE_PRIVATE);
+            preferences = ApplicationLoader.applicationContext.getSharedPreferences("suhbatconfig", Activity.MODE_PRIVATE);
             editor = preferences.edit();
 
             // ~ Ghost essentials
@@ -109,7 +109,7 @@ public class AyuConfig {
             showGhostToggleInDrawer = preferences.getBoolean("showGhostToggleInDrawer", true);
             showKillButtonInDrawer = preferences.getBoolean("showKillButtonInDrawer", false);
 
-            // ~ AyuSync
+            // ~ SuhbatSync
             // syncServerURL
             // syncServerToken
             syncEnabled = preferences.getBoolean("syncEnabled", false);

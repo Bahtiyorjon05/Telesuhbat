@@ -115,7 +115,7 @@
 
     <uses-sdk tools:overrideLibrary="androidx.camera.view, androidx.camera.extensions, androidx.camera.lifecycle, androidx.camera.camera2, androidx.camera.core" />
 
-    <!-- AyuGram: remove for release `usesCleartextTraffic` -->
+    <!-- Suhbat: remove for release `usesCleartextTraffic` -->
     <application
         android:name=".ApplicationLoader"
         android:allowAudioPlaybackCapture="true"
@@ -138,7 +138,7 @@
             android:value="@string/MAPS_V2_API" />
 
         <activity-alias
-            android:name="com.exteragram.messenger.DefaultIcon"
+            android:name="uz.suhbat.app.DefaultIcon"
             android:enabled="true"
             android:exported="true"
             android:targetActivity="org.telegram.ui.LaunchActivity">
@@ -155,7 +155,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.MonetIcon"
+            android:name="uz.suhbat.app.MonetIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_monet"
@@ -174,7 +174,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.GradientIcon"
+            android:name="uz.suhbat.app.GradientIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_gradient"
@@ -190,7 +190,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.GoogleIcon"
+            android:name="uz.suhbat.app.GoogleIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_google"
@@ -209,7 +209,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.Dsgn480Icon"
+            android:name="uz.suhbat.app.Dsgn480Icon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_480dsgn"
@@ -228,7 +228,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.AuroraIcon"
+            android:name="uz.suhbat.app.AuroraIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_aurora"
@@ -244,7 +244,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.SpaceIcon"
+            android:name="uz.suhbat.app.SpaceIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_space"
@@ -260,7 +260,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.WinterIcon"
+            android:name="uz.suhbat.app.WinterIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_winter"
@@ -276,7 +276,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.NeoIcon"
+            android:name="uz.suhbat.app.NeoIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_neo"
@@ -295,7 +295,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.OrbitIcon"
+            android:name="uz.suhbat.app.OrbitIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_orbit"
@@ -314,7 +314,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.AmethystIcon"
+            android:name="uz.suhbat.app.AmethystIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_amethyst"
@@ -333,7 +333,7 @@
         </activity-alias>
 
         <activity-alias
-            android:name="com.exteragram.messenger.SusIcon"
+            android:name="uz.suhbat.app.SusIcon"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_sus"

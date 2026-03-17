@@ -65,7 +65,7 @@ public class LauncherIconController {
 
         public ComponentName getComponentName(Context ctx) {
             if (componentName == null) {
-                componentName = new ComponentName(ctx.getPackageName(), "com.exteragram.messenger." + key);
+                componentName = new ComponentName(ctx.getPackageName(), "uz.suhbat.app." + key);
             }
             return componentName;
         }

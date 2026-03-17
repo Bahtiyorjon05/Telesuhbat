@@ -1,5 +1,5 @@
 /*
- * This is the source code of AyuGram for Android.
+ * This is the source code of Suhbat for Android.
  *
  * We do not and cannot prevent the use of our code,
  * but be respectful and credit the original author.
@@ -23,16 +23,16 @@ import java.util.ArrayList;
 // music for coding on jaBBa
 // https://open.spotify.com/track/2qpOzuQGFqTKNn56w7qShx
 public class AyuForwarder {
-    public static boolean isFullAyuForwardsNeeded(int currentAccount, ArrayList<MessageObject> messages) {
+    public static boolean isFullSuhbatForwardsNeeded(int currentAccount, ArrayList<MessageObject> messages) {
         var dialogId = messages.get(0).getDialogId();
         var chat = MessagesController.getInstance(currentAccount).getChat(Math.abs(dialogId));
 
-        return chat != null && chat.ayuNoforwards;
+        return chat != null && chat.suhbatNoforwards;
     }
 
-    public static boolean isAyuForwardNeeded(ArrayList<MessageObject> messages) {
+    public static boolean isSuhbatForwardNeeded(ArrayList<MessageObject> messages) {
         for (var message : messages) {
-            if (isAyuForwardNeeded(message)) {
+            if (isSuhbatForwardNeeded(message)) {
                 return true;
             }
         }
@@ -40,22 +40,22 @@ public class AyuForwarder {
         return false;
     }
 
-    private static boolean isAyuForwardNeeded(MessageObject message) {
-        return message.messageOwner != null && (message.messageOwner.ayuDeleted || message.messageOwner.ayuNoforwards);
+    private static boolean isSuhbatForwardNeeded(MessageObject message) {
+        return message.messageOwner != null && (message.messageOwner.suhbatDeleted || message.messageOwner.suhbatNoforwards);
     }
 
     public static void intelligentForward(int currentAccount, ArrayList<MessageObject> messages, long peer, boolean forwardFromMyName, boolean hideCaption, boolean notify, int scheduleDate, MessageObject replyToTopMsg) {
         var batches = new ArrayList<ForwardBatch>();
 
         var currentArray = new ArrayList<MessageObject>();
-        var currentBatch = new ForwardBatch(isAyuForwardNeeded(messages.get(0)), currentArray);
+        var currentBatch = new ForwardBatch(isSuhbatForwardNeeded(messages.get(0)), currentArray);
 
         for (var message : messages) {
-            if (isAyuForwardNeeded(message) != currentBatch.isAyuForwardNeeded) {
+            if (isSuhbatForwardNeeded(message) != currentBatch.isSuhbatForwardNeeded) {
                 batches.add(currentBatch);
 
                 currentArray = new ArrayList<>();
-                currentBatch = new ForwardBatch(isAyuForwardNeeded(message), currentArray);
+                currentBatch = new ForwardBatch(isSuhbatForwardNeeded(message), currentArray);
             }
 
             currentArray.add(message);
@@ -64,7 +64,7 @@ public class AyuForwarder {
         batches.add(currentBatch);
 
         for (var batch : batches) {
-            if (batch.isAyuForwardNeeded) {
+            if (batch.isSuhbatForwardNeeded) {
                 forwardMessages(currentAccount, batch.messages, peer, forwardFromMyName, hideCaption, notify, scheduleDate, replyToTopMsg);
             } else {
                 // use default forward, but wait for it
@@ -81,10 +81,10 @@ public class AyuForwarder {
 
         // todo: replies
 
-        var fullNoforwards = isFullAyuForwardsNeeded(currentAccount, messages);
+        var fullNoforwards = isFullSuhbatForwardsNeeded(currentAccount, messages);
 
         for (var message : messages) {
-            if (fullNoforwards || message.messageOwner.ayuNoforwards || message.messageOwner.ayuDeleted) {
+            if (fullNoforwards || message.messageOwner.suhbatNoforwards || message.messageOwner.suhbatDeleted) {
                 if (AyuUtils.isMediaDownloadable(message, false)) {
                     toBeDownloaded.add(message);
                 }
@@ -174,13 +174,13 @@ public class AyuForwarder {
                         isFinalInGroup
                 );
             } else {
-                Log.w("AyuGram", "Unsupported message type: " + message.messageOwner);
+                Log.w("Suhbat", "Unsupported message type: " + message.messageOwner);
             }
 
-            Log.w("AyuGram", "Message forwarded");
+            Log.w("Suhbat", "Message forwarded");
         }
 
-        Log.w("AyuGram", "All messages forwarded");
+        Log.w("Suhbat", "All messages forwarded");
     }
 
     private static TLRPC.TL_document mapDocument(int currentAccount, TLRPC.Document doc, File messagePath) {
@@ -214,11 +214,11 @@ public class AyuForwarder {
     }
 
     private static class ForwardBatch {
-        public final boolean isAyuForwardNeeded;
+        public final boolean isSuhbatForwardNeeded;
         public final ArrayList<MessageObject> messages;
 
-        public ForwardBatch(boolean isAyuForwardNeeded, ArrayList<MessageObject> messages) {
-            this.isAyuForwardNeeded = isAyuForwardNeeded;
+        public ForwardBatch(boolean isSuhbatForwardNeeded, ArrayList<MessageObject> messages) {
+            this.isSuhbatForwardNeeded = isSuhbatForwardNeeded;
             this.messages = messages;
         }
     }

@@ -1,21 +1,21 @@
-# AyuGram for Android
+# Suhbat for Android
 
-![AyuGram Logo](.github/AyuGram.png)
+![Suhbat Logo](.github/AyuGram.png)
 
 ## What's this fork even about?
 
 **Is it just exteraGram+Telegraher?**
 
-**AyuGram4A** is a fork of [exteraGram](https://github.com/exteraSquad/exteraGram) with
+**Suhbat** is a fork of [exteraGram](https://github.com/exteraSquad/exteraGram) with
 some patches from [Telegraher](https://github.com/nikitasius/Telegraher).
 
 But it's not just exteraGram with Telegraher's commits, **it's a fully reworked version**.
 
-The main difference between AyuGram and Telegraher is that AyuGram **saves** your messages history,
+The main difference between Suhbat and Telegraher is that Suhbat **saves** your messages history,
 while Telegraher just **caches** them.
 It means that you can clean your cache and still have all saved messages.
 
-Also, AyuGram has **full ghost mode**.
+Also, Suhbat has **full ghost mode**.
 It allows you to hide your online status from other users, even if you send them
 a message.
 
@@ -43,13 +43,13 @@ a message.
 - Message filters (e.g. hide ads)
 - Customizable edited/deleted marks
 - Local Telegram Premium
-- Sync read states and message history with AyuSync
+- Sync read states and message history with SuhbatSync
 - Up to stream Telegram version (*snidely*)
 
 Note that we use **Crashlytics**.
-If you don't want to send crash reports, you can disable it in **exteraGram Preferences**.
+If you don't want to send crash reports, you can disable it in **Suhbat Preferences**.
 
-**AyuGram4A** does **NOT** include proprietary **exteraGram** features.
+**Suhbat** does **NOT** include proprietary **exteraGram** features.
 
 ## Preview
 
@@ -70,14 +70,14 @@ from the **[dedicated topic](https://t.me/ayugramchat/1238)**.
 
 ## Want to throw some money?
 
-Developing AyuGram is not such a simple task.
+Developing Suhbat is not such a simple task.
 **We'd be grateful for any donation <3**
 
 All available methods can be found **[here](https://ayusync.cloud/ui/donate)**.
 
-## AyuSync? What is it?
+## SuhbatSync? What is it?
 
-**AyuSync** is our synchronization service.
+**SuhbatSync** is our synchronization service.
 You can either use official server or host your own.
 It can sync read states and message history.
 
@@ -107,20 +107,20 @@ Well, just fork it.
    APP_ID = 6
    APP_HASH = "eb06d4abfb49dc3eeb1aeb98ae0f581e"
    MAPS_V2_API = abcdef12345678
-   
+
    SIGNING_KEY_PASSWORD = password
    SIGNING_KEY_ALIAS = alias
    SIGNING_KEY_STORE_PASSWORD = password
    ```
-6. You are ready to compile `AyuGram`
+6. You are ready to compile `Suhbat`
 
-- **AyuGram** can be built with **Android Studio** or from the command line with **Gradle**:
+- **Suhbat** can be built with **Android Studio** or from the command line with **Gradle**:
 
 ```
 ./gradlew assembleAfatRelease
 ```
 
-## AyuGram Localization
+## Suhbat Localization
 
 [![Crowdin](https://badges.crowdin.net/ayugram/localized.svg)](https://crowdin.com/project/ayugram)
 [![Crowdin](https://badges.crowdin.net/exteralocales/localized.svg)](https://crowdin.com/project/exteralocales)
@@ -132,8 +132,24 @@ at **[Crowdin](https://crowdin.com/project/exteralocales)**!
 
 ## Credits
 
-- **[exteraGram](https://github.com/exteraSquad/exteraGram)**
-- [Telegraher](https://github.com/nikitasius/Telegraher)
-- [Cherrygram](https://github.com/arsLan4k1390/Cherrygram)
-- [Nagram](https://github.com/NextAlone/Nagram)
-- [Telegram FOSS](https://github.com/Telegram-FOSS-Team/Telegram-FOSS)
+This project is based on and inspired by many amazing works:
+
+- **[exteraGram](https://github.com/exteraSquad/exteraGram)** - Base fork with amazing features
+- **[Telegraher](https://github.com/nikitasius/Telegraher)** - Patches and features
+- **[Cherrygram](https://github.com/arsLan4k1390/Cherrygram)** - Inspiration
+- **[Nagram](https://github.com/NextAlone/Nagram)** - Inspiration  
+- **[Telegram FOSS](https://github.com/Telegram-FOSS-Team/Telegram-FOSS)** - Base Telegram source
+
+### Original AyuGram Project
+
+**Suhbat** was originally forked from **AyuGram4A** by the AyuGram team.
+We thank them for their original work and contributions to the Telegram client ecosystem.
+
+- Original AyuGram: **[AyuGram4A](https://github.com/AyuGram/AyuGram4A)**
+- AyuSync Backend: **[AyuSyncBackend](https://github.com/AyuGram/AyuSyncBackend)**
+
+---
+
+**Suhbat** is developed and maintained by **Bahtiyorjon**.
+
+*Copyright © 2023-2024 Suhbat Team. All rights reserved.*

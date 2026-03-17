@@ -2660,7 +2660,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                         url = url.replace("tg:addlist", "tg://telegram.org").replace("tg://addlist", "tg://telegram.org");
                                         data = Uri.parse(url);
                                         folderSlug = data.getQueryParameter("slug");
-                                    } else if ((url.startsWith("tg:extera") || url.startsWith("tg://extera"))) {
+                                    } else if ((url.startsWith("tg:suhbat") || url.startsWith("tg://suhbat"))) {
                                         open_settings = 7;
                                     } else if ((url.startsWith("tg:update") || url.startsWith("tg://update"))) {
                                         checkUpdates = true;

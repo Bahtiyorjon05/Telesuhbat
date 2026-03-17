@@ -1,5 +1,5 @@
 /*
- * This is the source code of AyuGram for Android.
+ * This is the source code of Suhbat for Android.
  *
  * We do not and cannot prevent the use of our code,
  * but be respectful and credit the original author.
@@ -47,10 +47,10 @@ public class AyuConstants {
     public static String DEFAULT_DELETED_MARK = "🧹";
     public static String DEFAULT_AYUSYNC_SERVER = BuildVars.isBetaApp() ? "ayusync-dev.radolyn.com:5000" : "ayusync.cloud";
 
-    public static String AYU_DATABASE = "ayu-data";
+    public static String AYU_DATABASE = "suhbat-data";
 
-    public static String APP_GITHUB = "AyuGram/AyuGram4A";
-    public static String APP_NAME = "AyuGram";
+    public static String APP_GITHUB = "Suhbat/Suhbat-Android";
+    public static String APP_NAME = "Suhbat";
 
     public static String BUILD_STORE_PACKAGE = "com.android.vending";
     public static String BUILD_ORIGINAL_PACKAGE = "org.telegram.messenger";

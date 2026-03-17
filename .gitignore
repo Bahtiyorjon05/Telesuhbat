@@ -1,16 +1,38 @@
+# Android Studio / IntelliJ
 TMessagesProj/.externalNativeBuild/
-TMessagesProj/src/main/java/com/exteragram/messenger/boost/
+TMessagesProj/.cxx/
+TMessagesProj/build/
+TMessagesProj/obj/
 .gradle/
 .idea/
-build/
+*.iml
+*.hprof
+
+# Build outputs
+*.apk
+*.aab
+*.so
+output-metadata.json
+
+# Sensitive files - NEVER COMMIT THESE!
+API_KEYS
+local.properties
+**/google-services.json
+*.jks
+*.keystore
+*.p12
+*.pfx
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Misc
 .cxx/
 obj/
 
-output-metadata.json
-local.properties
-API_KEYS
-
-*.hprof
-*.iml
-*.apk
-*.so

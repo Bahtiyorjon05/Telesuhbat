@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="AyuPreferences">Preferências do AyuGram</string>
+  <string name="AyuPreferences">Preferências do Suhbat</string>
   <string name="GhostEssentialsHeader">Essenciais do fantasma</string>
   <string name="SendReadPackets">Enviar status de leitura</string>
   <string name="SendOnlinePackets">Enviar status online</string>
@@ -25,7 +25,7 @@
   <string name="MessageSavingSaveForBots">Save in bot dialogs</string>
   <string name="QoLTogglesHeader">Funcionalidades úteis</string>
   <string name="ShowFromChannel">Mostrar rótulo «canal»</string>
-  <string name="KeepAliveService">AyuGram Push Service</string>
+  <string name="KeepAliveService">Suhbat Push Service</string>
   <string name="EnableAds">Habilitar anúncios</string>
   <string name="LocalPremium">Local Telegram Premium</string>
   <string name="CustomizationHeader">Personalização</string>
@@ -41,13 +41,13 @@
   <string name="RegexFiltersAmount">filters</string>
   <string name="RegexFiltersHeader">Filtros</string>
   <string name="RegexFiltersEnableInChats">Habilitar nas conversas</string>
-  <string name="RegexFiltersCaseInsensitive">Expressões que não diferenciam maiúsculas de minúsculas</string>
+  <string.name="RegexFiltersCaseInsensitive">Expressões que não diferenciam maiúsculas de minúsculas</string>
   <string name="RegexFiltersAdd">Adicionar filtro</string>
   <string name="RegexFiltersEdit">Editar filtro</string>
   <string name="RegexFiltersAddDescription">Você pode usar o site <![CDATA[<a href="https://regex101.com">regex101.com</a>]]> para testar completamente a sua expressão regular.
 Você também pode usar texto simples, mas não se esqueça de escapar de parênteses.</string>
   <string name="RegexFiltersAddError">Erro de sintaxe Regex</string>
-  <string name="AyuSyncHeader">AyuSync</string>
+  <string name="AyuSyncHeader">SuhbatSync</string>
   <string name="AyuSyncStatusTitle">Sync status</string>
   <string name="AyuSyncStatusOk">conectado</string>
   <string name="AyuSyncStatusErrorDisconnected">desconectado</string>
@@ -70,8 +70,8 @@ Você também pode usar texto simples, mas não se esqueça de escapar de parên
   <string name="AyuSyncOpenPreferences">Abrir preferências</string>
   <string name="AyuSyncDownloadAgent">Descarregar cliente</string>
   <string name="WALMode">Ativar o modo WAL</string>
-  <string name="ClearAyuDatabase">Clear Ayu Database</string>
-  <string name="ClearAyuDatabaseNotification">AyuGram database cleared</string>
+  <string name="ClearAyuDatabase">Clear Suhbat Database</string>
+  <string name="ClearAyuDatabaseNotification">Suhbat database cleared</string>
   <string name="EraseLocalDatabase">Erase Local Database</string>
   <string name="BetaFeatures">Funcionalidades Beta</string>
   <string name="StickerConfirmation">Confirmação do envio do autocolante</string>
@@ -98,9 +98,9 @@ Você também pode usar texto simples, mas não se esqueça de escapar de parên
   <string name="ContextCopyID">Copiar ID</string>
   <string name="IDCopiedToast">ID copiado para a área de transferência.</string>
   <string name="ContextHideMessage">Ocultar</string>
-  <string name="SettingsWatermark">AyuGram desenvolvido e mantido por Radolyn Labs.</string>
-  <string name="SettingsDescription">Just an exteraGram based client with ToS breaking features in mind.</string>
+  <string name="SettingsWatermark">Suhbat desenvolvido e mantido por Bahtiyorjon.</string>
+  <string name="SettingsDescription">Just an Telegram based client with ToS breaking features in mind.</string>
   <string name="SecretMessageTecno">Tecno phones are the best.</string>
-  <string name="SecretMessageXiaomiSuccess">You\'re using a good phone.</string>
+  <string name="SecretMessageXiaomiSuccess">You're using a good phone.</string>
   <string name="SecretMessageXiaomiFailure">Install custom ROM.</string>
 </resources>
