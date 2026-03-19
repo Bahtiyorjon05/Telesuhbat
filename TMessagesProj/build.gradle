@@ -93,14 +93,25 @@ android {
         targetSdkVersion 33
         versionName APP_VERSION_NAME
 
+        def appId = localProperties.getProperty("APP_ID")
+        if (appId == null || appId.isEmpty()) {
+            appId = "6" // Default Telegram APP_ID
+        }
+        def appHash = localProperties.getProperty("APP_HASH")
+        if (appHash == null || appHash.isEmpty()) {
+            appHash = "eb06d4abfb49dc3eeb1aeb98ae0f581e" // Default Telegram APP_HASH
+        }
+
         // Obtain your own keys at: https://core.telegram.org/api/obtaining_api_id
-        buildConfigField 'int', 'APP_ID', localProperties.getProperty("APP_ID")
-        buildConfigField 'String', 'APP_HASH', localProperties.getProperty("APP_HASH")
+        buildConfigField 'int', 'APP_ID', appId
+        buildConfigField 'String', 'APP_HASH', "\"" + appHash + "\""
         buildConfigField 'String', 'TELES_VERSION', '"' + new Date().format("yyyyMMdd") + '"'
         buildConfigField 'String', 'AYU_VERSION', '"9.6.6"'
 
         // Google Console: https://console.cloud.google.com/google/maps-apis/credentials
-        resValue 'string', 'MAPS_V2_API', localProperties.getProperty("MAPS_V2_API")
+        def mapsKey = localProperties.getProperty("MAPS_V2_API")
+        if (mapsKey == null) mapsKey = ""
+        resValue 'string', 'MAPS_V2_API', mapsKey
 
         ndk.abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
 
@@ -142,9 +153,9 @@ android {
     signingConfigs {
         release {
             storeFile file("config/extera.jks")
-            storePassword localProperties.getProperty("SIGNING_KEY_STORE_PASSWORD")
-            keyAlias localProperties.getProperty("SIGNING_KEY_ALIAS")
-            keyPassword localProperties.getProperty("SIGNING_KEY_PASSWORD")
+            storePassword localProperties.getProperty("SIGNING_KEY_STORE_PASSWORD") ?: ""
+            keyAlias localProperties.getProperty("SIGNING_KEY_ALIAS") ?: ""
+            keyPassword localProperties.getProperty("SIGNING_KEY_PASSWORD") ?: ""
         }
     }
 

@@ -45,7 +45,7 @@
   <string name="RegexFiltersAdd">Добавить фильтр</string>
   <string name="RegexFiltersEdit">Изменить фильтр</string>
   <string name="RegexFiltersAddDescription">Вы можете использовать сайт <![CDATA[<a href="https://regex101.com">regex101.com</a>]]> для проверки регулярного выражения.
-Вы также можете использовать обычный текст, но не забудьте поставить \ перед скобками.</string>
+Вы также можете использовать обычный текст, но не забудьте поставить \\ перед скобками.</string>
   <string name="RegexFiltersAddError">Синтаксическая ошибка</string>
   <string name="AyuSyncHeader">SuhbatSync</string>
   <string name="AyuSyncStatusTitle">Статус синхронизации</string>

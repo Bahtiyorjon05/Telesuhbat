@@ -157,9 +157,7 @@
         <activity-alias
             android:name="uz.suhbat.app.MonetIcon"
             android:enabled="false"
-            android:exported="true"
-            android:icon="@mipmap/ic_launcher_monet"
-            android:roundIcon="@mipmap/ic_launcher_monet"
+            android:exported="false"
             android:targetActivity="org.telegram.ui.LaunchActivity">
 
             <intent-filter>

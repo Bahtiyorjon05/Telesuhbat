@@ -41,7 +41,7 @@
   <string name="RegexFiltersAmount">filters</string>
   <string name="RegexFiltersHeader">Filtros</string>
   <string name="RegexFiltersEnableInChats">Habilitar nas conversas</string>
-  <string.name="RegexFiltersCaseInsensitive">Expressões que não diferenciam maiúsculas de minúsculas</string>
+  <string name="RegexFiltersCaseInsensitive">Expressões que não diferenciam maiúsculas de minúsculas</string>
   <string name="RegexFiltersAdd">Adicionar filtro</string>
   <string name="RegexFiltersEdit">Editar filtro</string>
   <string name="RegexFiltersAddDescription">Você pode usar o site <![CDATA[<a href="https://regex101.com">regex101.com</a>]]> para testar completamente a sua expressão regular.
@@ -99,8 +99,8 @@ Você também pode usar texto simples, mas não se esqueça de escapar de parên
   <string name="IDCopiedToast">ID copiado para a área de transferência.</string>
   <string name="ContextHideMessage">Ocultar</string>
   <string name="SettingsWatermark">Suhbat desenvolvido e mantido por Bahtiyorjon.</string>
-  <string name="SettingsDescription">Just an Telegram based client with ToS breaking features in mind.</string>
+  <string name="SettingsDescription">Just a Telegram based client with ToS breaking features in mind.</string>
   <string name="SecretMessageTecno">Tecno phones are the best.</string>
-  <string name="SecretMessageXiaomiSuccess">You're using a good phone.</string>
+  <string name="SecretMessageXiaomiSuccess">You are using a good phone.</string>
   <string name="SecretMessageXiaomiFailure">Install custom ROM.</string>
 </resources>

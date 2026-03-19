@@ -2,9 +2,9 @@
 <resources>
   <string name="AyuPreferences">Suhbat Preferences</string>
   <string name="GhostEssentialsHeader">Ghost essentials</string>
-  <string name="DontSendReadPackets">Don't read messages</string>
-  <string name="DontSendOnlinePackets">Don't send online</string>
-  <string name="DontSendUploadProgress">Don't send typing</string>
+  <string name="DontSendReadPackets">Don\'t read messages</string>
+  <string name="DontSendOnlinePackets">Don\'t send online</string>
+  <string name="DontSendUploadProgress">Don\'t send typing</string>
   <string name="SendOfflinePacketAfterOnline">Immediate offline after online</string>
   <string name="MarkReadAfterSend">Send read status after reply</string>
   <string name="UseScheduledMessages">Schedule messages</string>
@@ -45,7 +45,7 @@
   <string name="RegexFiltersAdd">Add filter</string>
   <string name="RegexFiltersEdit">Edit filter</string>
   <string name="RegexFiltersAddDescription">You can use site <![CDATA[<a href="https://regex101.com">regex101.com</a>]]> to fully test your regular expression.
-    You can also use plain text, but don't forget to escape brackets.</string>
+    You can also use plain text, but don\'t forget to escape brackets.</string>
   <string name="RegexFiltersAddError">Regex syntax error</string>
   <string name="AyuSyncHeader">SuhbatSync</string>
   <string name="AyuSyncStatusTitle">Sync status</string>
@@ -101,6 +101,6 @@
   <string name="SettingsWatermark">Suhbat developed and maintained by Bahtiyorjon.</string>
   <string name="SettingsDescription">Just a Telegram based client with ToS breaking features in mind.</string>
   <string name="SecretMessageTecno">Tecno phones are the best.</string>
-  <string name="SecretMessageXiaomiSuccess">You're using a good phone.</string>
+  <string name="SecretMessageXiaomiSuccess">You\'re using a good phone.</string>
   <string name="SecretMessageXiaomiFailure">Install custom ROM.</string>
 </resources>
