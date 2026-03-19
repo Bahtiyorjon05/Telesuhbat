@@ -45,7 +45,7 @@ public abstract class AyuHistoryHook {
             return;
         }
 
-        ArrayList<Integer> usersToLoad = new ArrayList<>();
+        ArrayList<Long> usersToLoad = new ArrayList<>();
         ArrayList<Long> chatsToLoad = new ArrayList<>();
 
         for (DeletedMessageFull deletedMessageFull : deletedMessages) {

@@ -13,7 +13,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
@@ -30,17 +29,17 @@ import org.telegram.tgnet.TLRPC;
 
 public abstract class AyuMessageUtils {
 
-    public static ArrayList deserializeMultiple(byte[] bArr, Function function) {
+    public static ArrayList<TLObject> deserializeMultiple(byte[] bArr, Function<NativeByteBuffer, TLObject> function) {
         if (bArr == null || bArr.length == 0) {
-            return new ArrayList();
+            return new ArrayList<>();
         }
         try {
             NativeByteBuffer nativeByteBuffer = new NativeByteBuffer(bArr.length);
             nativeByteBuffer.buffer.put(bArr);
             nativeByteBuffer.rewind();
-            ArrayList arrayList = new ArrayList();
+            ArrayList<TLObject> arrayList = new ArrayList<>();
             while (nativeByteBuffer.buffer.position() < nativeByteBuffer.buffer.limit()) {
-                TLObject tLObject = (TLObject) function.apply(nativeByteBuffer);
+                TLObject tLObject = function.apply(nativeByteBuffer);
                 if (tLObject != null) {
                     arrayList.add(tLObject);
                 }
@@ -48,7 +47,7 @@ public abstract class AyuMessageUtils {
             return arrayList;
         } catch (Exception unused) {
             Log.e("AyuGram", "Failed to allocate buffer");
-            return new ArrayList();
+            return new ArrayList<>();
         }
     }
 
@@ -103,7 +102,7 @@ public abstract class AyuMessageUtils {
         tLRPC$Message.message = ayuMessageBase.text;
         tLRPC$Message.entities = deserializeMultiple(
             ayuMessageBase.textEntities,
-            (NativeByteBuffer nativeByteBuffer) -> TLRPC.MessageEntity.TLdeserialize(
+            nativeByteBuffer -> TLRPC.MessageEntity.TLdeserialize(
                 nativeByteBuffer,
                 nativeByteBuffer.readInt32(false),
                 false
@@ -207,16 +206,15 @@ public abstract class AyuMessageUtils {
                     tLRPC$Document2.mime_type = ayuMessageBase.mimeType;
                     tLRPC$Document2.attributes = deserializeMultiple(
                         ayuMessageBase.documentAttributesSerialized,
-                        (NativeByteBuffer nativeByteBuffer) -> TLRPC.DocumentAttribute.TLdeserialize(
+                        nativeByteBuffer -> TLRPC.DocumentAttribute.TLdeserialize(
                             nativeByteBuffer,
                             nativeByteBuffer.readInt32(false),
                             false
                         )
                     );
-                    Iterator it = deserializeMultiple(
+                    Iterator<TLObject> it = deserializeMultiple(
                         ayuMessageBase.thumbsSerialized,
-                        (NativeByteBuffer nativeByteBuffer) -> TLRPC.PhotoSize.TLdeserialize(
-                            0L, 0L, 0L,
+                        nativeByteBuffer -> TLRPC.PhotoSize.TLdeserialize(
                             nativeByteBuffer,
                             nativeByteBuffer.readInt32(false),
                             false
@@ -278,7 +276,7 @@ public abstract class AyuMessageUtils {
                         file = processAttachment(ayuSavePreferences);
                         TLRPC.MessageMedia media = MessageObject.getMedia(ayuSavePreferences.getMessage());
                         if (media != null && MessageObject.isVideoDocument(media.document)) {
-                            Iterator it = media.document.thumbs.iterator();
+                            Iterator<TLRPC.PhotoSize> it = media.document.thumbs.iterator();
                             while (true) {
                                 if (!it.hasNext()) {
                                     break;
@@ -382,18 +380,13 @@ public abstract class AyuMessageUtils {
         return new File("/");
     }
 
-    public static byte[] serializeMultiple(ArrayList arrayList) {
+    public static byte[] serializeMultiple(ArrayList<?> arrayList) {
         if (arrayList == null || arrayList.size() == 0 || !AyuConfig.saveFormatting) {
             return "".getBytes();
         }
         try {
-            NativeByteBuffer nativeByteBuffer = new NativeByteBuffer(arrayList.stream().mapToInt(new ToIntFunction() {
-                @Override
-                public final int applyAsInt(Object obj) {
-                    return ((TLObject) obj).getObjectSize();
-                }
-            }).sum());
-            Iterator it = arrayList.iterator();
+            NativeByteBuffer nativeByteBuffer = new NativeByteBuffer(arrayList.stream().mapToInt(obj -> ((TLObject) obj).getObjectSize()).sum());
+            Iterator<?> it = arrayList.iterator();
             while (it.hasNext()) {
                 ((TLObject) it.next()).serializeToStream(nativeByteBuffer);
             }

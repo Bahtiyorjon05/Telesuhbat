@@ -23,16 +23,16 @@ import java.util.ArrayList;
 // music for coding on jaBBa
 // https://open.spotify.com/track/2qpOzuQGFqTKNn56w7qShx
 public class AyuForwarder {
-    public static boolean isFullSuhbatForwardsNeeded(int currentAccount, ArrayList<MessageObject> messages) {
+    public static boolean isFullAyuForwardsNeeded(int currentAccount, ArrayList<MessageObject> messages) {
         var dialogId = messages.get(0).getDialogId();
         var chat = MessagesController.getInstance(currentAccount).getChat(Math.abs(dialogId));
 
         return chat != null && chat.suhbatNoforwards;
     }
 
-    public static boolean isSuhbatForwardNeeded(ArrayList<MessageObject> messages) {
+    public static boolean isAyuForwardNeeded(ArrayList<MessageObject> messages) {
         for (var message : messages) {
-            if (isSuhbatForwardNeeded(message)) {
+            if (isAyuForwardNeeded(message)) {
                 return true;
             }
         }
@@ -40,7 +40,7 @@ public class AyuForwarder {
         return false;
     }
 
-    private static boolean isSuhbatForwardNeeded(MessageObject message) {
+    private static boolean isAyuForwardNeeded(MessageObject message) {
         return message.messageOwner != null && (message.messageOwner.suhbatDeleted || message.messageOwner.suhbatNoforwards);
     }
 
@@ -48,14 +48,14 @@ public class AyuForwarder {
         var batches = new ArrayList<ForwardBatch>();
 
         var currentArray = new ArrayList<MessageObject>();
-        var currentBatch = new ForwardBatch(isSuhbatForwardNeeded(messages.get(0)), currentArray);
+        var currentBatch = new ForwardBatch(isAyuForwardNeeded(messages.get(0)), currentArray);
 
         for (var message : messages) {
-            if (isSuhbatForwardNeeded(message) != currentBatch.isSuhbatForwardNeeded) {
+            if (isAyuForwardNeeded(message) != currentBatch.isAyuForwardNeeded) {
                 batches.add(currentBatch);
 
                 currentArray = new ArrayList<>();
-                currentBatch = new ForwardBatch(isSuhbatForwardNeeded(message), currentArray);
+                currentBatch = new ForwardBatch(isAyuForwardNeeded(message), currentArray);
             }
 
             currentArray.add(message);
@@ -64,7 +64,7 @@ public class AyuForwarder {
         batches.add(currentBatch);
 
         for (var batch : batches) {
-            if (batch.isSuhbatForwardNeeded) {
+            if (batch.isAyuForwardNeeded) {
                 forwardMessages(currentAccount, batch.messages, peer, forwardFromMyName, hideCaption, notify, scheduleDate, replyToTopMsg);
             } else {
                 // use default forward, but wait for it
@@ -214,11 +214,11 @@ public class AyuForwarder {
     }
 
     private static class ForwardBatch {
-        public final boolean isSuhbatForwardNeeded;
+        public final boolean isAyuForwardNeeded;
         public final ArrayList<MessageObject> messages;
 
-        public ForwardBatch(boolean isSuhbatForwardNeeded, ArrayList<MessageObject> messages) {
-            this.isSuhbatForwardNeeded = isSuhbatForwardNeeded;
+        public ForwardBatch(boolean isAyuForwardNeeded, ArrayList<MessageObject> messages) {
+            this.isAyuForwardNeeded = isAyuForwardNeeded;
             this.messages = messages;
         }
     }

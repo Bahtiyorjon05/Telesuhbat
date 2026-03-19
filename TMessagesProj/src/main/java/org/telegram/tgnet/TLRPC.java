@@ -43832,6 +43832,7 @@ public class TLRPC {
         public boolean gigagroup;
         public boolean noforwards;
         public boolean ayuNoforwards;
+        public boolean suhbatNoforwards;
         public boolean forum;
         public ArrayList<TL_restrictionReason> restriction_reason = new ArrayList<>();
         public TL_channelAdminRights_layer92 admin_rights_layer92;
@@ -60923,6 +60924,7 @@ public class TLRPC {
         public boolean post;
         public boolean from_scheduled;
         public boolean ayuDeleted;
+        public boolean suhbatDeleted;
         public boolean legacy;
         public boolean edit_hide;
         public boolean pinned;
@@ -60936,6 +60938,7 @@ public class TLRPC {
         public int ttl_period;
         public boolean noforwards;
         public boolean ayuNoforwards;
+        public boolean suhbatNoforwards;
         public boolean topic_start;
         public int send_state = 0; //custom
         public int fwd_msg_id = 0; //custom
