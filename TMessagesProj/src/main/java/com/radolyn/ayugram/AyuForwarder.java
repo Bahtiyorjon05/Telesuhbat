@@ -81,7 +81,7 @@ public class AyuForwarder {
 
         // todo: replies
 
-        var fullNoforwards = isFullSuhbatForwardsNeeded(currentAccount, messages);
+        var fullNoforwards = isFullAyuForwardsNeeded(currentAccount, messages);
 
         for (var message : messages) {
             if (fullNoforwards || message.messageOwner.suhbatNoforwards || message.messageOwner.suhbatDeleted) {

@@ -31,7 +31,7 @@ public abstract class AyuHistoryHook {
         int topicId,
         boolean isSecretChat
     ) {
-        Iterator<MessageObject> it;
+        Iterator<TLRPC.User> it;
         Iterator<TLRPC.Chat> it2;
         MessagesStorage messagesStorage = MessagesStorage.getInstance(currentAccount);
         long currentClientUserId = UserConfig.getInstance(currentAccount).clientUserId;

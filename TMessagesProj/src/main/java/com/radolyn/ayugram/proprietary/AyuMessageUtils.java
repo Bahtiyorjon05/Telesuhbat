@@ -14,8 +14,6 @@ import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.DialogObject;
 import org.telegram.messenger.FileLoader;
@@ -29,7 +27,8 @@ import org.telegram.tgnet.TLRPC;
 
 public abstract class AyuMessageUtils {
 
-    public static ArrayList<TLObject> deserializeMultiple(byte[] bArr, Function<NativeByteBuffer, TLObject> function) {
+    @SuppressWarnings("unchecked")
+    public static <T extends TLObject> ArrayList<T> deserializeMultiple(byte[] bArr, TLObjectDeserializer<T> deserializer) {
         if (bArr == null || bArr.length == 0) {
             return new ArrayList<>();
         }
@@ -37,9 +36,9 @@ public abstract class AyuMessageUtils {
             NativeByteBuffer nativeByteBuffer = new NativeByteBuffer(bArr.length);
             nativeByteBuffer.buffer.put(bArr);
             nativeByteBuffer.rewind();
-            ArrayList<TLObject> arrayList = new ArrayList<>();
+            ArrayList<T> arrayList = new ArrayList<>();
             while (nativeByteBuffer.buffer.position() < nativeByteBuffer.buffer.limit()) {
-                TLObject tLObject = function.apply(nativeByteBuffer);
+                T tLObject = deserializer.deserialize(nativeByteBuffer);
                 if (tLObject != null) {
                     arrayList.add(tLObject);
                 }
@@ -49,6 +48,10 @@ public abstract class AyuMessageUtils {
             Log.e("AyuGram", "Failed to allocate buffer");
             return new ArrayList<>();
         }
+    }
+
+    public interface TLObjectDeserializer<T extends TLObject> {
+        T deserialize(NativeByteBuffer buffer);
     }
 
     public static void map(AyuMessageBase ayuMessageBase, TLRPC.Message tLRPC$Message, int i) {
@@ -100,13 +103,9 @@ public abstract class AyuMessageUtils {
             tLRPC$TL_messageReplyHeader2.forum_topic = ayuMessageBase.replyForumTopic;
         }
         tLRPC$Message.message = ayuMessageBase.text;
-        tLRPC$Message.entities = deserializeMultiple(
+        tLRPC$Message.entities = (ArrayList<TLRPC.MessageEntity>) deserializeMultiple(
             ayuMessageBase.textEntities,
-            nativeByteBuffer -> TLRPC.MessageEntity.TLdeserialize(
-                nativeByteBuffer,
-                nativeByteBuffer.readInt32(false),
-                false
-            )
+            nativeByteBuffer -> TLRPC.MessageEntity.TLdeserialize(nativeByteBuffer, nativeByteBuffer.readInt32(false), false)
         );
     }
 
@@ -206,22 +205,15 @@ public abstract class AyuMessageUtils {
                     tLRPC$Document2.mime_type = ayuMessageBase.mimeType;
                     tLRPC$Document2.attributes = deserializeMultiple(
                         ayuMessageBase.documentAttributesSerialized,
-                        nativeByteBuffer -> TLRPC.DocumentAttribute.TLdeserialize(
-                            nativeByteBuffer,
-                            nativeByteBuffer.readInt32(false),
-                            false
-                        )
+                        nativeByteBuffer -> TLRPC.DocumentAttribute.TLdeserialize(nativeByteBuffer, nativeByteBuffer.readInt32(false), false)
                     );
-                    Iterator<TLObject> it = deserializeMultiple(
+                    ArrayList<TLRPC.PhotoSize> thumbs = deserializeMultiple(
                         ayuMessageBase.thumbsSerialized,
-                        nativeByteBuffer -> TLRPC.PhotoSize.TLdeserialize(
-                            nativeByteBuffer,
-                            nativeByteBuffer.readInt32(false),
-                            false
-                        )
-                    ).iterator();
+                        nativeByteBuffer -> TLRPC.PhotoSize.TLdeserialize(0L, 0L, 0L, nativeByteBuffer, nativeByteBuffer.readInt32(false), false)
+                    );
+                    Iterator<TLRPC.PhotoSize> it = thumbs.iterator();
                     while (it.hasNext()) {
-                        TLRPC.PhotoSize tLRPC$PhotoSize = (TLRPC.PhotoSize) it.next();
+                        TLRPC.PhotoSize tLRPC$PhotoSize = it.next();
                         if (tLRPC$PhotoSize != null) {
                             if ((tLRPC$PhotoSize instanceof TLRPC.TL_photoSize) && 
                                 !TextUtils.isEmpty(ayuMessageBase.hqThumbPath) && 
@@ -385,10 +377,17 @@ public abstract class AyuMessageUtils {
             return "".getBytes();
         }
         try {
-            NativeByteBuffer nativeByteBuffer = new NativeByteBuffer(arrayList.stream().mapToInt(obj -> ((TLObject) obj).getObjectSize()).sum());
-            Iterator<?> it = arrayList.iterator();
-            while (it.hasNext()) {
-                ((TLObject) it.next()).serializeToStream(nativeByteBuffer);
+            int totalSize = 0;
+            for (Object obj : arrayList) {
+                if (obj instanceof TLObject) {
+                    totalSize += ((TLObject) obj).getObjectSize();
+                }
+            }
+            NativeByteBuffer nativeByteBuffer = new NativeByteBuffer(totalSize);
+            for (Object obj : arrayList) {
+                if (obj instanceof TLObject) {
+                    ((TLObject) obj).serializeToStream(nativeByteBuffer);
+                }
             }
             nativeByteBuffer.reuse();
             nativeByteBuffer.rewind();
